@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-xs 10">
+        <app-skills-edit></app-skills-edit>
+        <hr>
+        <h2>List</h2>
+        <ul class="Sckills">
+            <li *ngFor="let Sckill of Sckills"
+              [class.selected]="Sckill === selectSckill"
+              (click)="onSelect(Sckill)">
+              <span class="badge">{{Sckill.level}}</span> {{Sckill.name}}
+            </li>
+        </ul>
+        <!--<div *ngIf="selectedHero">
+
+            <h2>{{selectSckill.name | uppercase}} Details</h2>
+            <div><span>level: </span>{{selectSckill.level}}</div>
+            <div>
+              <label>name:
+                <input [(ngModel)]="selectSckill.name" placeholder="name"/>
+              </label>
+            </div>
+          
+          </div>-->
+    </div>
+</div>
