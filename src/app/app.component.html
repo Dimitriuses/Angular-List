@@ -1,9 +1,9 @@
-<app-header></app-header>
+<app-header (selectedChoice)="onChoseSwitch($event)"></app-header>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <app-events></app-events>
-      <app-skills-list></app-skills-list>
+      <app-events  *ngIf="LChose === 'events'" ></app-events>
+      <app-skills-list *ngIf="LChose !== 'events'"></app-skills-list>
     </div>
   </div>
 </div>
