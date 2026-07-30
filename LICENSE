@@ -22,6 +22,12 @@ SOFTWARE.
 
 ---
 
-The one image the app displays is not covered by this licence: the Svelte logo
-at `d2eip9sf3oo6c2.cloudfront.net` is hotlinked from egghead.io's CDN and is
-not redistributed by this repository. See "Known limitations" in README.md.
+The one image the app displays, `src/assets/svelte-logo.svg`, is not covered by
+the copyright notice above. It is the Svelte logo, by Rich Harris, obtained from
+Wikimedia Commons (`File:Svelte Logo.svg`) under the **MIT License**, and it is
+included here unmodified with attribution as that licence requires.
+
+The Svelte name and logo are trademarks of the Svelte project. Their use here is
+descriptive only: this is an archived Angular learning project, it is not
+sponsored or endorsed by the Svelte project, and it makes no claim of
+compatibility with Svelte. See docs/ASSETS.md for the full provenance.

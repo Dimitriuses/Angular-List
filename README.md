@@ -115,9 +115,17 @@ records the rendered text, computed colours, geometry, images and loaded bundles
 element under `app-root`, plus a screenshot hash. It was run three times against the 2019
 build first — 9/9 identical each time — before any comparison was trusted.
 
-Against the tidied build, **the four Skills-panel checkpoints are byte-identical**, DOM
-dump *and* PNG. The five Events-panel checkpoints differ, and the diff is exactly the five
-DOM nodes deleted below plus the 39 px of vertical space they occupied. Nothing else moved.
+Against the final build, **the four Skills-panel checkpoints are byte-identical to the 2019
+build**, DOM dump *and* PNG. The five Events-panel checkpoints differ, and the difference is
+fully accounted for by the two intentional changes below:
+
+- the five deleted DOM nodes, plus the 39 px of vertical space they occupied;
+- the image swap — four lines, being the `src`, the intrinsic size, and the `<img>`/`<span>`
+  boxes going from 50×50 to 41.6×50 (the replacement is the logo mark, where the 2019 hotlink
+  was the same mark padded square). Same position, same colours, same everything else; the
+  brand colour was pixel-sampled at `#FF3E00` in both.
+
+Nothing else moved.
 
 - **Removed two CLI stub components** that shipped their scaffolding text into the running
   UI: `events-detail` rendered `events-detail works!` in the right-hand column, and
@@ -133,9 +141,17 @@ DOM nodes deleted below plus the 39 px of vertical space they occupied. Nothing 
   imported anywhere. Verified as a surgical change: the regenerated lockfile resolves
   **916 packages against the original 918, with zero additions and zero version changes**.
 - **`npm run lint`: 46 errors → 0.** All formatting (quote style, semicolons, whitespace,
-  a 141-character line against a 140 limit — the hotlinked image URL, now a named constant).
+  a 141-character line against a 140 limit — the image URL, now a named constant).
   tslint and Protractor are both end-of-life; they are period-typical
   and were deliberately left in place rather than swapped for a modern toolchain.
+- **Replaced the hotlinked image with a local, properly licensed one.** The only picture in
+  the app was pulled straight off egghead.io's CDN in 2019, so the demo depended on a third
+  party's bandwidth. It is now `src/assets/svelte-logo.svg` — the Svelte logo by Rich Harris,
+  from Wikimedia Commons under the **MIT licence**, unmodified, attributed, and checksummed.
+  Svelte's own branding repository was the obvious source and could not be used: it has no
+  licence at all. Full provenance and the trademark reasoning are in
+  [docs/ASSETS.md](docs/ASSETS.md). **The site is now entirely self-contained** — the
+  production build makes zero third-party requests.
 - Added the Pages workflow, `.nvmrc`, `.npmrc`, this README, `LICENSE` and `docs/`.
 
 ## Known limitations
@@ -164,9 +180,6 @@ Everything here is measured on the current build, not guessed at.
   with zero routes; navigation is a string field plus `*ngIf`. There are no deep links, and
   the Back button does not restore the previous tab — the `href="#"` nav links do not call
   `preventDefault`, so clicking a tab only pushes a `#` history entry.
-- **The one image is hotlinked from someone else's CDN.** The Svelte logo is loaded from
-  `d2eip9sf3oo6c2.cloudfront.net` (egghead.io). It still resolves today, but the demo
-  depends on a third party's bandwidth and will show a broken image the day it stops.
 - **The two panels have nothing to do with each other.** An event scheduler does not need
   a skills list; that panel exists because it was the tutorial chapter I was on.
 - `Event` in `src/app/events/event.ts` is a default export named `Event`, which shadows the
@@ -196,4 +209,10 @@ src/app/
 
 ## Licence
 
-MIT — see [LICENSE](LICENSE). The hotlinked Svelte logo is not mine and is not covered by it.
+MIT — see [LICENSE](LICENSE).
+
+The one image, `src/assets/svelte-logo.svg`, is the Svelte logo by **Rich Harris**, used under
+the **MIT licence** via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Svelte_Logo.svg)
+and included unmodified. The Svelte name and logo are trademarks of the Svelte project; their
+use here is descriptive, and this project is not sponsored or endorsed by it. See
+[docs/ASSETS.md](docs/ASSETS.md).

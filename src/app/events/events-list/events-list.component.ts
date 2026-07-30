@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import Event from '../event';
 
-// Hotlinked from egghead.io's CDN in 2019. Still resolves, but nothing in this
-// repo owns it — see "Known limitations" in the README.
-const SVELTE_LOGO = 'https://d2eip9sf3oo6c2.cloudfront.net/tags/images/000/001/236/full/svelte-logo-vertical.png';
+// Relative, so it resolves against <base href> and works under the GitHub Pages
+// project sub-path. Was a hotlink to egghead.io's CDN in 2019 — see docs/ASSETS.md.
+const SVELTE_LOGO = 'assets/svelte-logo.svg';
 
 @Component({
   selector: 'app-events-list',
