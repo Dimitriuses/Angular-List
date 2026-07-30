@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Sckill} from '../sckill'
-import{SCKILL} from '../mock_sckills'
+import { Skill } from '../skill';
+import { SKILLS } from '../mock-skills';
 
 @Component({
   selector: 'app-skills-list',
@@ -8,16 +8,16 @@ import{SCKILL} from '../mock_sckills'
   styleUrls: ['./skills-list.component.scss']
 })
 export class SkillsListComponent implements OnInit {
-  Sckills = SCKILL
-  selectSckill:Sckill
+  skills = SKILLS;
+  selectedSkill: Skill;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  onSelect(sckill:Sckill):void{
-    this.selectSckill = sckill;
+  onSelect(skill: Skill): void {
+    this.selectedSkill = skill;
   }
 
 }

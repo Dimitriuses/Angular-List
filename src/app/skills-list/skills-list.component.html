@@ -3,23 +3,12 @@
         <app-skills-edit></app-skills-edit>
         <hr>
         <h2>List</h2>
-        <ul class="Sckills">
-            <li *ngFor="let Sckill of Sckills"
-              [class.selected]="Sckill === selectSckill"
-              (click)="onSelect(Sckill)">
-              <span class="badge">{{Sckill.level}}</span> {{Sckill.name}}
+        <ul class="skills">
+            <li *ngFor="let skill of skills"
+              [class.selected]="skill === selectedSkill"
+              (click)="onSelect(skill)">
+              <span class="badge">{{skill.level}}</span> {{skill.name}}
             </li>
         </ul>
-        <!--<div *ngIf="selectedHero">
-
-            <h2>{{selectSckill.name | uppercase}} Details</h2>
-            <div><span>level: </span>{{selectSckill.level}}</div>
-            <div>
-              <label>name:
-                <input [(ngModel)]="selectSckill.name" placeholder="name"/>
-              </label>
-            </div>
-          
-          </div>-->
     </div>
 </div>
